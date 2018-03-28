@@ -5,6 +5,8 @@ import {
   View,
   SectionList
 } from 'react-native';
+import Title from './Title';
+import TaskCard from './TaskCard';
 import { connect } from 'react-redux';
 
 class TaskFeed extends React.Component {
@@ -18,8 +20,12 @@ class TaskFeed extends React.Component {
     return (
       <View style={styles.app}>
         <SectionList 
-          renderItem={({item}) => <Text>{item}</Text>}
-          renderSectionHeader={({section}) => <Text>{section.key}</Text>}
+          renderSectionHeader={({section}) => {
+            return <Title>{section.key}</Title>;
+          }}
+          renderItem={({item}) => {
+            return <TaskCard title={item} />
+          }}
           sections={[
             {key:'due', data: ['task1', 'task2']},
             {key:'upcoming', data: ['task3', 'task4', 'task5']},
