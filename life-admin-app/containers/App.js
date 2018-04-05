@@ -3,16 +3,20 @@ import {
   StackNavigator
 } from 'react-navigation';
 import TaskFeed from './TaskFeed';
+import TaskFocus from './TaskFocus';
 
 const RootStack = StackNavigator(
   {
-    TaskFeed : { screen: TaskFeed }
+    TaskFeed : { screen: TaskFeed },
+    TaskFocus : { screen: TaskFocus }
   },
   {
     initialRouteName: 'TaskFeed',
-    navigationOptions: ({ navigation }) => {
-      return {title: 'whatsup'}
-    }
+    navigationOptions: {
+      headerStyle: {
+        padding:10
+      }
+    } 
   }
 );
 

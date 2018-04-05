@@ -24,7 +24,12 @@ class TaskFeed extends React.Component {
             return <Title>{section.key}</Title>;
           }}
           renderItem={({item}) => {
-            return <TaskCard title={item} />
+            return (
+              <TaskCard 
+                taskTitle={item} 
+                navigation={this.props.navigation} 
+              />
+            );
           }}
           sections={[
             {key:'due', data: ['task1', 'task2']},

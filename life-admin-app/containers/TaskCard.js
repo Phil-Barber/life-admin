@@ -2,12 +2,15 @@ import React from 'react';
 import { 
   StyleSheet, 
   Text, 
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
 import Swipeout from 'react-native-swipeout';
 
 class TaskCard extends React.Component {
   render() {
+    const { taskTitle } = this.props;
+
     let swipeBtns = [{
       text: 'Complete',
       backgroundColor: 'transparent',
@@ -20,15 +23,21 @@ class TaskCard extends React.Component {
         autoClose={true} 
         backgroundColor='transparent'
       >
-        <View style={[styles.container, styles.card]}>
-          <Text style={styles.title} >{this.props.title}</Text>
-          <Text> 
-            <Text style={styles.details} >
-              Extra details about the Task
+        <TouchableHighlight 
+          onPress={() => this.props.navigation.navigate('TaskFocus', {
+            taskTitle
+          })}
+        >
+          <View style={[styles.container, styles.card]}>
+            <Text style={styles.title} >{taskTitle}</Text>
+            <Text> 
+              <Text style={styles.details} >
+                Extra details about the Task
+              </Text>
+              <Text>date?</Text>
             </Text>
-            <Text>date?</Text>
-          </Text>
-        </View>
+          </View>
+        </TouchableHighlight>
       </Swipeout>
     );
   }
