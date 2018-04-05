@@ -5,6 +5,9 @@ import {
   View
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import Title from './TaskFocus/Title';
+import LastCompleted from './TaskFocus/LastCompleted';
+import Recurrence from './TaskFocus/Recurrence';
 
 class TaskFocus extends React.Component {
   static navigationOptions = ({ navigation, screenProps }) => {
@@ -41,23 +44,19 @@ class TaskFocus extends React.Component {
 
     return (
       <View>
-        <Text style={styles.title} >{params.taskTitle}</Text>
-        <Text>
-          <Text style={styles.section} >Last Completed: </Text>
-          <Text>12/03/18</Text>
-          
-        </Text>
+        <Title text={params.taskTitle} />
+        <LastCompleted date='12/03/2107' styles={styles} />
+        <Recurrence mode='weeks' n={3} styles={styles} />
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  title : {
-    fontSize : 30
-  },
-  section : {
+  sectionHeader : {
     fontWeight: 'bold'
+  }, 
+  sectionBody: {
   }
 });
 
