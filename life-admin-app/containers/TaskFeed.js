@@ -8,6 +8,7 @@ import {
 import Title from './Title';
 import TaskCard from './TaskCard';
 import { connect } from 'react-redux';
+import { fetchTasksIfNeeded } from '../actions/actions';
 
 class TaskFeed extends React.Component {
   static navigationOptions = ({navigation}) => {
@@ -16,7 +17,12 @@ class TaskFeed extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.props.dispatch(fetchTasksIfNeeded());
+  }
+
   render() {
+    const tasks = this.props.tasks;
     return (
       <View style={styles.app}>
         <SectionList 
@@ -26,14 +32,14 @@ class TaskFeed extends React.Component {
           renderItem={({item}) => {
             return (
               <TaskCard 
-                taskTitle={item} 
+                task={item}
                 navigation={this.props.navigation} 
               />
             );
           }}
           sections={[
-            {key:'due', data: ['task1', 'task2']},
-            {key:'upcoming', data: ['task3', 'task4', 'task5']},
+            {key:'due', data: tasks.due},
+            {key:'upcoming', data: tasks.upcoming},
           ]}
           keyExtractor={(item, index) => index}
        />
@@ -55,9 +61,8 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-
-  return { 
-  };
+  const { tasks } = state;
+  return { tasks };
 }
 
 export default connect(mapStateToProps)(TaskFeed);

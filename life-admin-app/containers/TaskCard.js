@@ -9,7 +9,7 @@ import Swipeout from 'react-native-swipeout';
 
 class TaskCard extends React.Component {
   render() {
-    const { taskTitle } = this.props;
+    const { task } = this.props;
 
     let swipeBtns = [{
       text: 'Complete',
@@ -25,11 +25,11 @@ class TaskCard extends React.Component {
       >
         <TouchableHighlight 
           onPress={() => this.props.navigation.navigate('TaskFocus', {
-            taskTitle
+            task
           })}
         >
           <View style={[styles.container, styles.card]}>
-            <Text style={styles.title} >{taskTitle}</Text>
+            <Text style={styles.title} >{task.title}</Text>
             <Text> 
               <Text style={styles.details} >
                 Extra details about the Task
