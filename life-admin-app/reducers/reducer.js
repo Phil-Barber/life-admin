@@ -4,7 +4,9 @@ import {
   UPDATE_TASK_TITLE,
   UPDATE_TASK_RECURRENCE_N,
   UPDATE_TASK_RECURRENCE_MODE,
-  FETCH_TASKS
+  UPDATE_TASK,
+  FETCH_TASKS,
+  COMPLETE_TASK
 } from '../actions/actions';
 
 const reducer = combineReducers({
@@ -61,57 +63,27 @@ function updateTaskRecurrenceMode(state, action) {
 
 ////
 
-function tasks(state = {due:[], upcoming:[]}, action) {
+function tasks(state = [], action) {
   switch(action.type) {
     case FETCH_TASKS:
-      let due = [
-        {
-          title: 'task3',
-          lastCompleted: '01/01/1992',
-          recurrence: {
-            n: 2,
-            mode: 'weeks'
-          }
-        },
-        {
-          title: 'task4',
-          lastCompleted: '01/01/1992',
-          recurrence: {
-            n: 2,
-            mode: 'weeks'
-          }
-        },
-        {
-          title: 'task5',
-          lastCompleted: '01/01/1992',
-          recurrence: {
-            n: 2,
-            mode: 'weeks'
-          }
-        },
-      ];
-        let upcoming = [
-        {
-          title: 'task1',
-          lastCompleted: '01/01/1992',
-          recurrence: {
-            n: 2,
-            mode: 'weeks'
-          }
-        },
-        {
-          title: 'task2',
-          lastCompleted: '01/01/1992',
-          recurrence: {
-            n: 2,
-            mode: 'weeks'
-          }
-        },
-      ];
-      return {due, upcoming};
+      return action.tasks;
+    case UPDATE_TASK: 
+      return updateTask(state, action.task);   
+    case COMPLETE_TASK:
+      return completeTask(state, action.taskId);
     default:
       return state;
   }
+}
+
+function updateTask(state, task) {
+  let tasks = state.filter((t) =>  t.id != task.id);
+  tasks.push(task);
+  return tasks;
+}
+
+function completeTask(state, taskId) {
+  return state;
 }
 
 export default reducer;

@@ -6,6 +6,8 @@ import {
   TouchableHighlight
 } from 'react-native';
 import Swipeout from 'react-native-swipeout';
+import { connect } from 'react-redux';
+import { completeTask } from '../actions/actions';
 
 class TaskCard extends React.Component {
   render() {
@@ -14,7 +16,8 @@ class TaskCard extends React.Component {
     let swipeBtns = [{
       text: 'Complete',
       backgroundColor: 'transparent',
-      color: 'green'
+      color: 'green',
+      onPress: () => this.completeTask(task.id)
     }];
 
     return (
@@ -25,7 +28,8 @@ class TaskCard extends React.Component {
       >
         <TouchableHighlight 
           onPress={() => this.props.navigation.navigate('TaskFocus', {
-            task
+            task,
+            completeTask: this.completeTask.bind(this)
           })}
         >
           <View style={[styles.container, styles.card]}>
@@ -40,6 +44,10 @@ class TaskCard extends React.Component {
         </TouchableHighlight>
       </Swipeout>
     );
+  }
+  
+  completeTask(id) {
+    this.props.dispatch(completeTask(id));
   }
 }
 
@@ -69,4 +77,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default TaskCard;
+export default connect()(TaskCard);

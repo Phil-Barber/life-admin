@@ -17,12 +17,18 @@ class TaskFeed extends React.Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(fetchTasksIfNeeded());
   }
 
   render() {
     const tasks = this.props.tasks;
+    let due = [];
+    let upcoming = [];
+    tasks.map((task) => {
+      (task.due) ? due.push(task) : upcoming.push(task);
+    });
+
     return (
       <View style={styles.app}>
         <SectionList 
@@ -38,8 +44,8 @@ class TaskFeed extends React.Component {
             );
           }}
           sections={[
-            {key:'due', data: tasks.due},
-            {key:'upcoming', data: tasks.upcoming},
+            {key:'due', data: due},
+            {key:'upcoming', data: upcoming},
           ]}
           keyExtractor={(item, index) => index}
        />

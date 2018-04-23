@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-Button,
+  Button,
   StyleSheet,
   Text,
   View
@@ -38,7 +38,7 @@ class TaskFocus extends React.Component {
   }
 
   _toggleEdit() { 
-    let editing = (this.props.editing)
+    let editing = !(this.props.editing === null)
       ? null
       : this.props.navigation.state.params.task;
     this.props.dispatch(editOrSubmitTask(editing));
@@ -46,8 +46,12 @@ class TaskFocus extends React.Component {
 
   render() {
     const { params } = this.props.navigation.state;
-    const task = params.task;
+    const selectedTask = params.task;
     const editing = this.props.editing;
+    const tasks = this.props.tasks;
+
+    let task = tasks.filter((t) => t.id === selectedTask.id);
+    task = (task.length) ? task[0] : selectedTask;
 
     return (
       <View>
@@ -62,6 +66,11 @@ class TaskFocus extends React.Component {
           styles={styles} 
           editing={editing} 
         />
+        <Button
+          title='Complete'
+          onPress={() => {params.completeTask(task.id)}}
+          style={styles.button}
+        />
       </View>
     );
   }
@@ -72,12 +81,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   }, 
   sectionBody: {
+  },
+  button: {
   }
 });
 
 function mapStateToProps(state) {
-  const editing = state.editTask.task || false;
-  return {editing};
+  const editing = state.editTask.task || null;
+  const tasks = state.tasks || [];
+  return {editing, tasks};
 }
 
 export default connect(mapStateToProps)(TaskFocus);
