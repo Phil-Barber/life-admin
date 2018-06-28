@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 import {
   TOGGLE_EDIT_TASK,
   UPDATE_TASK_TITLE,
@@ -7,84 +7,83 @@ import {
   UPDATE_TASK,
   FETCH_TASKS,
   COMPLETE_TASK
-} from '../actions/actions';
+} from '../actions/actions'
 
 const reducer = combineReducers({
   editTask,
   tasks
-});
+})
 
-function editTask(state = {task: null}, action) {
-  switch(action.type) {
-    case TOGGLE_EDIT_TASK: 
-      return toggleEditTask(state, action);
+function editTask (state = {task: null}, action) {
+  switch (action.type) {
+    case TOGGLE_EDIT_TASK:
+      return toggleEditTask(state, action)
     case UPDATE_TASK_TITLE:
-      return updateTaskTitle(state, action);
+      return updateTaskTitle(state, action)
     case UPDATE_TASK_RECURRENCE_N:
-      return updateTaskRecurrenceN(state, action);
+      return updateTaskRecurrenceN(state, action)
     case UPDATE_TASK_RECURRENCE_MODE:
-      return updateTaskRecurrenceMode(state, action);
+      return updateTaskRecurrenceMode(state, action)
     default:
-      return state;
+      return state
   }
 }
 
-function toggleEditTask(state = false, action) {
+function toggleEditTask (state = false, action) {
   return Object.assign({}, state, {
-    task : action.task
-  });
+    task: action.task
+  })
 }
 
-function updateTaskTitle(state, action) {
-  const task = state.task;
+function updateTaskTitle (state, action) {
+  const task = state.task
   const newTask = Object.assign({}, task, {
-    title : action.title
-  });
+    title: action.title
+  })
   return Object.assign({}, state, {
     task: newTask
-  });
+  })
 }
 
-function updateTaskRecurrenceN(state, action) {
-  let task = state.task;
+function updateTaskRecurrenceN (state, action) {
+  let task = state.task
   task.recurrence = Object.assign({}, task.recurrence, {
     n: action.n
-  });
-  return Object.assign({}, state, {task});
+  })
+  return Object.assign({}, state, {task})
 }
 
-function updateTaskRecurrenceMode(state, action) {
-  let task = state.task;
+function updateTaskRecurrenceMode (state, action) {
+  let task = state.task
   task.recurrence = Object.assign({}, task.recurrence, {
     mode: action.mode
-  });
-  return Object.assign({}, state, {task});
+  })
+  return Object.assign({}, state, {task})
 }
 
-////
+/// /
 
-function tasks(state = [], action) {
-  switch(action.type) {
+function tasks (state = [], action) {
+  switch (action.type) {
     case FETCH_TASKS:
-      return action.tasks;
-    case UPDATE_TASK: 
-      return updateTask(state, action.task);   
+      return action.tasks
+    case UPDATE_TASK:
+      return updateTask(state, action.task)
     case COMPLETE_TASK:
-      return completeTask(state, action.taskId);
+      return completeTask(state, action.taskId)
     default:
-      return state;
+      return state
   }
 }
 
-function updateTask(state, task) {
-  let tasks = state.filter((t) =>  t.id != task.id);
-  tasks.push(task);
-  return tasks;
+function updateTask (state, task) {
+  let tasks = state.filter((t) => t.id != task.id)
+  tasks.push(task)
+  return tasks
 }
 
-function completeTask(state, taskId) {
-  return state;
+function completeTask (state, taskId) {
+  return state
 }
 
-export default reducer;
-
+export default reducer

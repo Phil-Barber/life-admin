@@ -5,7 +5,7 @@ import rootReducer from './reducers/reducer.js'
 
 const loggerMiddleware = createLogger({
   timestamp: false,
-  colors : {
+  colors: {
     title: false,
     prevState: false,
     action: false,
@@ -14,7 +14,7 @@ const loggerMiddleware = createLogger({
   }
 })
 
-export default function configureStore(preloadedState) {
+export default function configureStore (preloadedState) {
   return createStore(
     rootReducer,
     preloadedState,

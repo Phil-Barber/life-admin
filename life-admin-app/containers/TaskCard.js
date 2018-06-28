@@ -1,32 +1,32 @@
-import React from 'react';
-import { 
-  StyleSheet, 
-  Text, 
+import React from 'react'
+import {
+  StyleSheet,
+  Text,
   View,
   TouchableHighlight
-} from 'react-native';
-import Swipeout from 'react-native-swipeout';
-import { connect } from 'react-redux';
-import { completeTask } from '../actions/actions';
+} from 'react-native'
+import Swipeout from 'react-native-swipeout'
+import { connect } from 'react-redux'
+import { completeTask } from '../actions/actions'
 
 class TaskCard extends React.Component {
-  render() {
-    const { task } = this.props;
+  render () {
+    const { task } = this.props
 
     let swipeBtns = [{
       text: 'Complete',
       backgroundColor: 'transparent',
       color: 'green',
       onPress: () => this.completeTask(task.id)
-    }];
+    }]
 
     return (
-      <Swipeout 
-        right={swipeBtns} 
-        autoClose={true} 
+      <Swipeout
+        right={swipeBtns}
+        autoClose
         backgroundColor='transparent'
       >
-        <TouchableHighlight 
+        <TouchableHighlight
           onPress={() => this.props.navigation.navigate('TaskFocus', {
             task,
             completeTask: this.completeTask.bind(this)
@@ -34,7 +34,7 @@ class TaskCard extends React.Component {
         >
           <View style={[styles.container, styles.card]}>
             <Text style={styles.title} >{task.title}</Text>
-            <Text> 
+            <Text>
               <Text style={styles.details} >
                 Extra details about the Task
               </Text>
@@ -43,11 +43,11 @@ class TaskCard extends React.Component {
           </View>
         </TouchableHighlight>
       </Swipeout>
-    );
+    )
   }
-  
-  completeTask(id) {
-    this.props.dispatch(completeTask(id));
+
+  completeTask (id) {
+    this.props.dispatch(completeTask(id))
   }
 }
 
@@ -59,22 +59,22 @@ const styles = StyleSheet.create({
     margin: 5
   },
   card: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderRadius: 10,
-    shadowColor: "#000000",
+    shadowColor: '#000000',
     shadowOpacity: 0.3,
     shadowRadius: 1,
     shadowOffset: {
       height: 1,
-      width: 0.3,
+      width: 0.3
     }
   },
   title: {
-    fontSize:25
+    fontSize: 25
   },
   details: {
-    fontSize:20
+    fontSize: 20
   }
-});
+})
 
-export default connect()(TaskCard);
+export default connect()(TaskCard)
