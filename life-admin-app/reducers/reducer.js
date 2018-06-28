@@ -77,7 +77,7 @@ function tasks (state = [], action) {
 }
 
 function updateTask (state, task) {
-  let tasks = state.filter((t) => t.id != task.id)
+  let tasks = state.filter((t) => t.id !== task.id)
   tasks.push(task)
   return tasks
 }
