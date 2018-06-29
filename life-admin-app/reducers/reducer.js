@@ -61,8 +61,6 @@ function updateTaskRecurrenceMode (state, action) {
   return Object.assign({}, state, {task})
 }
 
-/// /
-
 function tasks (state = [], action) {
   switch (action.type) {
     case FETCH_TASKS:
@@ -83,7 +81,22 @@ function updateTask (state, task) {
 }
 
 function completeTask (state, taskId) {
-  return state
+  let found = false
+  const tasks = state.map((task) => {
+    if (task.id === taskId) {
+      found = true
+      return Object.assign({}, task, {
+        due: false,
+        lastCompleted: '26/10/2016'
+      })
+    }
+    return task
+  })
+  if (!found) {
+    // TODO handle properly
+    console.error('Couldn\'t find task when completing')
+  }
+  return tasks
 }
 
 export default reducer
