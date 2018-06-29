@@ -48,6 +48,7 @@ class TaskCard extends React.Component {
 
   completeTask (id) {
     this.props.dispatch(completeTask(id))
+    this.props.navigation.navigate('TaskFeed')
   }
 }
 
