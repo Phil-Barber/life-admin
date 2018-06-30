@@ -1,10 +1,10 @@
-import { Component } from 'react'
+import React from 'react'
 import {
   Text
 } from 'react-native'
 import { connect } from 'react-redux'
 
-class TaskForm extends Component {
+class TaskForm extends React.Component {
   render () {
     return <Text>Hi</Text>
   }
