@@ -4,14 +4,14 @@ import { MaterialIcons } from '@expo/vector-icons'
 import { withNavigation } from 'react-navigation'
 
 class TaskFormAdd extends React.Component {
-  render() {
+  render () {
     return (
-      <View style={styles.container} > 
-        <MaterialIcons 
+      <View style={styles.container} >
+        <MaterialIcons
           name='add-circle-outline'
           size={70}
           color='grey'
-          onPress={() => {this.props.navigation.navigate('TaskForm')}}
+          onPress={() => { this.props.navigation.navigate('TaskForm') }}
         />
       </View>
     )
@@ -20,9 +20,9 @@ class TaskFormAdd extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
-    justifyContent: 'flex-end', 
-    alignItems: 'flex-end', 
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
     padding: 20
   }
 })

@@ -33,11 +33,11 @@ class TaskCard extends React.Component {
           })}
         >
           <View style={[styles.container, styles.card]}>
-            <View style={{flex:1, flexDirection:'row'}} >
-              <View style={{flex:6}} >
+            <View style={styles.headerRow} >
+              <View style={styles.titleContainer} >
                 <Text style={styles.title} >{task.title}</Text>
               </View>
-              <View style={{flex:3}} >
+              <View style={styles.dueContainer} >
                 <Text style={styles.due} >{
                   (task.due) ? '' : '01/01/19'
                 }</Text>
@@ -76,11 +76,21 @@ const styles = StyleSheet.create({
       width: 0.3
     }
   },
-  title: {  
+  headerRow: {
+    flex: 1, 
+    flexDirection: 'row'
+  },
+  titleContainer: {
+    flex: 6
+  },
+  title: {
     fontSize: 25
   },
   details: {
     fontSize: 20
+  },
+  dueContainer: {
+    flex: 3
   },
   due: {
     fontSize: 25,
