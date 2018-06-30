@@ -77,7 +77,7 @@ function fetch () {
   return [{
     id: 0,
     due: true,
-    title: 'task3',
+    title: 'Task 3',
     lastCompleted: '01/01/1992',
     recurrence: {
       n: 2,
@@ -86,22 +86,22 @@ function fetch () {
   }, {
     id: 1,
     due: true,
-    title: 'task4',
+    title: 'Task 4',
     lastCompleted: '01/01/1992',
     recurrence: {
       n: 2,
       mode: 'weeks'
     }
-  }/* {
+  }, {
       id: 2,
       due: false,
-      title: 'task5',
+      title: 'Task 5',
       lastCompleted: '01/01/1992',
       recurrence: {
         n: 2,
         mode: 'weeks'
       }
-    }, {
+    }/*, {
       id: 3,
       due: false,
       title: 'task1',

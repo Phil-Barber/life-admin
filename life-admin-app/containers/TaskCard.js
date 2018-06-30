@@ -33,12 +33,18 @@ class TaskCard extends React.Component {
           })}
         >
           <View style={[styles.container, styles.card]}>
-            <Text style={styles.title} >{task.title}</Text>
-            <Text>
-              <Text style={styles.details} >
-                Extra details about the Task
-              </Text>
-              <Text>date?</Text>
+            <View style={{flex:1, flexDirection:'row'}} >
+              <View style={{flex:6}} >
+                <Text style={styles.title} >{task.title}</Text>
+              </View>
+              <View style={{flex:3}} >
+                <Text style={styles.due} >{
+                  (task.due) ? '' : '01/01/19'
+                }</Text>
+              </View>
+            </View>
+            <Text style={styles.details} >
+              Extra details about the Task
             </Text>
           </View>
         </TouchableHighlight>
@@ -70,11 +76,15 @@ const styles = StyleSheet.create({
       width: 0.3
     }
   },
-  title: {
+  title: {  
     fontSize: 25
   },
   details: {
     fontSize: 20
+  },
+  due: {
+    fontSize: 25,
+    textAlign: 'right'
   }
 })
 
