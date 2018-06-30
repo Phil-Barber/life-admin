@@ -3,15 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "@expo/vector-icons": "^6.3.1",
     "jest-expo": "25.0.0",
-    "react-native-scripts": "1.11.1",
-    "react-native-swipeout": "^2.3.3",
-    "react-navigation": "^1.5.8",
-    "react-redux": "^5.0.7",
     "react-test-renderer": "16.2.0",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0",
     "standard": "^11.0.1"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -28,7 +21,14 @@
   "dependencies": {
     "expo": "^25.0.0",
     "react": "16.2.0",
-    "react-native": "0.52.0"
+    "react-native": "0.52.0",
+    "@expo/vector-icons": "^6.3.1",
+    "react-native-scripts": "1.11.1",
+    "react-native-swipeout": "^2.3.3",
+    "react-navigation": "^1.5.8",
+    "react-redux": "^5.0.7",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0"
   },
   "standard": {
     "ignore": [
