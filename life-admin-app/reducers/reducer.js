@@ -7,7 +7,7 @@ import {
   UPDATE_TASK,
   FETCH_TASKS,
   COMPLETE_TASK
-} from '../actions/actions'
+} from '../constants/types'
 
 const reducer = combineReducers({
   editTask,

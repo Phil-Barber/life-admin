@@ -20,7 +20,7 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "standard && node node_modules/jest/bin/jest.js"
+    "test": "node node_modules/jest/bin/jest.js && standard"
   },
   "jest": {
     "preset": "jest-expo"
@@ -32,7 +32,7 @@
   },
   "standard": {
     "ignore": [
-      "App.test.js"
+      "tests/*"
     ]
   }
 }
