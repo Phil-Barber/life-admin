@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import Title from './Title';
 import TaskCard from './TaskCard';
+import TaskFormAdd from './TaskFormAdd';
 import { connect } from 'react-redux';
 import { fetchTasksIfNeeded } from '../actions/actions';
-import { MaterialIcons } from '@expo/vector-icons'
 
 class TaskFeed extends React.Component {
   static navigationOptions = ({navigation}) => {
@@ -51,14 +51,7 @@ class TaskFeed extends React.Component {
           ]}
           keyExtractor={(item, index) => index}
         />
-        <View style={styles.buttonContainer} > 
-          <MaterialIcons 
-            name='add-circle-outline'
-            size={70}
-            color='grey'
-            onPress={() => {this.props.navigation.navigate('TaskForm')}}
-          />
-        </View>
+        <TaskFormAdd />
       </View>
     )
   }
@@ -67,12 +60,6 @@ class TaskFeed extends React.Component {
 const styles = StyleSheet.create({
   app: {
     flex: 1,
-  },
-  buttonContainer: {
-    flex: 1, 
-    justifyContent: 'flex-end', 
-    alignItems: 'flex-end', 
-    padding: 20
   }
 })
 
