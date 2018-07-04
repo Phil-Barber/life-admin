@@ -7,6 +7,7 @@ import {
 import { connect } from 'react-redux'
 import Title from './TaskFocus/Title'
 import Recurrence from './TaskFocus/Recurrence'
+import { createTask } from '../actions/actions'
 
 class TaskForm extends React.Component {
   static navigationOptions = ({navigation}) => {
@@ -33,7 +34,8 @@ class TaskForm extends React.Component {
   }
 
   _createTask () {
-    
+    this.props.dispatch(createTask(this.props.task))   
+    this.props.navigation.navigate('TaskFeed')
   }
 }
 
@@ -45,4 +47,9 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect()(TaskForm)
+function mapStateToProps(state) {
+  const task = state.editTask.task
+  return { task }
+}
+
+export default connect(mapStateToProps)(TaskForm)

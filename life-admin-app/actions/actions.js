@@ -6,7 +6,8 @@ import {
   UPDATE_TASK,
   FETCH_TASKS,
   COMPLETE_TASK,
-  INIT_NEW_TASK
+  INIT_NEW_TASK,
+  SUBMIT_NEW_TASK
 } from '../constants/types'
 
 export function fetchTasksIfNeeded () {
@@ -88,6 +89,20 @@ function task() {
       n: 1,
       mode: 'days'
     }
+  }
+}
+
+export function createTask(task) {
+  return (dispatch, getState) => {
+    dispatch(toggleEditTask(null))
+    dispatch(submitNewTask(task))
+  }
+}
+
+function submitNewTask (task) {
+  return {
+    type: SUBMIT_NEW_TASK,
+    task
   }
 }
 
