@@ -75,14 +75,14 @@ export function completeTask (taskId) {
   }
 }
 
-export function initNewTask() {
+export function initNewTask () {
   return {
     type: INIT_NEW_TASK,
     task: task()
   }
 }
 
-function task() {
+function task () {
   return {
     title: 'New Task',
     recurrence: {
@@ -92,7 +92,7 @@ function task() {
   }
 }
 
-export function createTask(task) {
+export function createTask (task) {
   return (dispatch, getState) => {
     dispatch(toggleEditTask(null))
     dispatch(submitNewTask(task))
@@ -126,15 +126,15 @@ function fetch () {
       mode: 'weeks'
     }
   }, {
-      id: 2,
-      due: false,
-      title: 'Task 5',
-      lastCompleted: '01/01/1992',
-      recurrence: {
-        n: 2,
-        mode: 'weeks'
-      }
-    }/*, {
+    id: 2,
+    due: false,
+    title: 'Task 5',
+    lastCompleted: '01/01/1992',
+    recurrence: {
+      n: 2,
+      mode: 'weeks'
+    }
+  }/*, {
       id: 3,
       due: false,
       title: 'task1',

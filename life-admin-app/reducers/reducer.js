@@ -46,7 +46,7 @@ function updateTaskTitle (state, action) {
 function updateTaskRecurrenceN (state, action) {
   let task = state.task
   task.recurrence = Object.assign({}, task.recurrence, {
-    n: action.n 
+    n: action.n
   })
   return Object.assign({}, state, {task})
 }
@@ -59,7 +59,7 @@ function updateTaskRecurrenceMode (state, action) {
   return Object.assign({}, state, {task})
 }
 
-function initNewTask(state, action) {
+function initNewTask (state, action) {
   return Object.assign({}, state, {task: action.task})
 }
 

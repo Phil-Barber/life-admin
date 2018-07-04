@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     }
   },
   headerRow: {
-    flex: 1, 
+    flex: 1,
     flexDirection: 'row'
   },
   titleContainer: {

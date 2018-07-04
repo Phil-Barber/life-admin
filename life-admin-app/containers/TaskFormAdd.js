@@ -13,15 +13,15 @@ class TaskFormAdd extends React.Component {
           name='add-circle-outline'
           size={70}
           color='grey'
-          onPress={() => {this._onPress()}}
+          onPress={() => { this._onPress() }}
         />
       </View>
     )
   }
-  
+
   _onPress () {
     this.props.dispatch(initNewTask())
-    this.props.navigation.navigate('TaskForm') 
+    this.props.navigation.navigate('TaskForm')
   }
 }
 
