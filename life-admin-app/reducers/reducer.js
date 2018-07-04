@@ -6,13 +6,9 @@ import {
   UPDATE_TASK_RECURRENCE_MODE,
   UPDATE_TASK,
   FETCH_TASKS,
-  COMPLETE_TASK
+  COMPLETE_TASK,
+  INIT_NEW_TASK
 } from '../constants/types'
-
-const reducer = combineReducers({
-  editTask,
-  tasks
-})
 
 function editTask (state = {task: null}, action) {
   switch (action.type) {
@@ -24,6 +20,8 @@ function editTask (state = {task: null}, action) {
       return updateTaskRecurrenceN(state, action)
     case UPDATE_TASK_RECURRENCE_MODE:
       return updateTaskRecurrenceMode(state, action)
+    case INIT_NEW_TASK:
+      return initNewTask(state, action)
     default:
       return state
   }
@@ -48,7 +46,7 @@ function updateTaskTitle (state, action) {
 function updateTaskRecurrenceN (state, action) {
   let task = state.task
   task.recurrence = Object.assign({}, task.recurrence, {
-    n: action.n
+    n: action.n 
   })
   return Object.assign({}, state, {task})
 }
@@ -59,6 +57,10 @@ function updateTaskRecurrenceMode (state, action) {
     mode: action.mode
   })
   return Object.assign({}, state, {task})
+}
+
+function initNewTask(state, action) {
+  return Object.assign({}, state, {task: action.task})
 }
 
 function tasks (state = [], action) {
@@ -98,5 +100,10 @@ function completeTask (state, taskId) {
   }
   return tasks
 }
+
+const reducer = combineReducers({
+  editTask,
+  tasks
+})
 
 export default reducer

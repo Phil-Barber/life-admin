@@ -80,8 +80,6 @@ const styles = StyleSheet.create({
   sectionHeader : {
     fontWeight: 'bold'
   }, 
-  sectionBody: {
-  },
   button: {
   }
 });

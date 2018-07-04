@@ -2,6 +2,8 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 import { withNavigation } from 'react-navigation'
+import { connect } from 'react-redux'
+import { initNewTask } from '../actions/actions'
 
 class TaskFormAdd extends React.Component {
   render () {
@@ -11,10 +13,15 @@ class TaskFormAdd extends React.Component {
           name='add-circle-outline'
           size={70}
           color='grey'
-          onPress={() => { this.props.navigation.navigate('TaskForm') }}
+          onPress={() => {this._onPress()}}
         />
       </View>
     )
+  }
+  
+  _onPress () {
+    this.props.dispatch(initNewTask())
+    this.props.navigation.navigate('TaskForm') 
   }
 }
 
@@ -27,4 +34,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default withNavigation(TaskFormAdd)
+export default connect()(withNavigation(TaskFormAdd))

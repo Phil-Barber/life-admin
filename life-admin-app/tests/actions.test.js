@@ -3,6 +3,18 @@ import * as types from '../constants/types'
 
 describe('actions', () => {
   describe('editing task', () => {
+    it('Should create an action to init new task', () => {
+      expect(actions.initNewTask()).toEqual(
+        expect.objectContaining({
+          type: types.INIT_NEW_TASK,
+          task: expect.objectContaining({
+            title: expect.any(String),
+            recurrence: expect.any(Object)
+          })
+        })
+      )
+    })
+
     it('Should create an action to update title text', () => {
       const title = 'sample text'
       const expected = {

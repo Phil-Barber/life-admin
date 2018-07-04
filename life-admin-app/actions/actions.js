@@ -5,7 +5,8 @@ import {
   UPDATE_TASK_RECURRENCE_MODE,
   UPDATE_TASK,
   FETCH_TASKS,
-  COMPLETE_TASK
+  COMPLETE_TASK,
+  INIT_NEW_TASK
 } from '../constants/types'
 
 export function fetchTasksIfNeeded () {
@@ -70,6 +71,23 @@ export function completeTask (taskId) {
   return {
     type: COMPLETE_TASK,
     taskId
+  }
+}
+
+export function initNewTask() {
+  return {
+    type: INIT_NEW_TASK,
+    task: task()
+  }
+}
+
+function task() {
+  return {
+    title: 'New Task',
+    recurrence: {
+      n: 1,
+      mode: 'days'
+    }
   }
 }
 
