@@ -7,7 +7,8 @@ import {
   UPDATE_TASK,
   FETCH_TASKS,
   COMPLETE_TASK,
-  INIT_NEW_TASK
+  INIT_NEW_TASK,
+  SUBMIT_NEW_TASK
 } from '../constants/types'
 
 function editTask (state = {task: null}, action) {
@@ -71,6 +72,8 @@ function tasks (state = [], action) {
       return updateTask(state, action.task)
     case COMPLETE_TASK:
       return completeTask(state, action.taskId)
+    case SUBMIT_NEW_TASK:
+      return submitNewTask(state, action.task)
     default:
       return state
   }
@@ -99,6 +102,11 @@ function completeTask (state, taskId) {
     console.error('Couldn\'t find task when completing')
   }
   return tasks
+}
+
+function submitNewTask(state, task) {
+  // make call to api
+  
 }
 
 const reducer = combineReducers({
