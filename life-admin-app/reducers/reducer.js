@@ -10,6 +10,7 @@ import {
   INIT_NEW_TASK,
   SUBMIT_NEW_TASK
 } from '../constants/types'
+import { submitTaskToServer } from '../api/api'
 
 function editTask (state = {task: null}, action) {
   switch (action.type) {
@@ -90,10 +91,12 @@ function completeTask (state, taskId) {
   const tasks = state.map((task) => {
     if (task.id === taskId) {
       found = true
-      return Object.assign({}, task, {
+      task = Object.assign({}, task, {
         due: false,
         lastCompleted: '26/10/2016'
       })
+      submitTaskToServer(task);
+      return task;
     }
     return task
   })

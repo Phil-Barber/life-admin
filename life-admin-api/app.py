@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import os
 
@@ -22,12 +22,15 @@ def hello():
     return "Hello World"
 
 
-@app.route('/task=<title>')
-def hello_name(title):
-    result = models.Result(title=title)
-    db.session.add(result)
-    db.session.commit()
-    return "Hello {}!".format(title)
+@app.route('/task', methods=['GET', 'POST'])
+def task():
+    if request.method == 'POST': 
+        data = request.get_json()
+        task = data['task']
+        result = models.Result(task['title'])
+        db.session.add(result)
+        db.session.commit()
+        return jsonify("Added")
 
 
 if __name__ == '__main__':
